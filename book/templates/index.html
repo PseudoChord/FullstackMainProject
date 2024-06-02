@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+    <title>FirstPage</title>
+
+    <style>
+        /* Reset default browser styles */
+        body, h1, p, form {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            height: 100vh; /* Make body full height of viewport */
+        }
+
+        .left-container, .right-container {
+            flex: 1; /* Each container takes 50% of the available space */
+            display: flex;
+            justify-content: center; /* Center content horizontally */
+            align-items: center; /* Center content vertically */
+        }
+
+        .left-container {
+            background-color: #f6d365; /* First complementary color */
+            font-family: 'Poppins', sans-serif; /* Apply Poppins font */
+        }
+
+        .right-container {
+            background-color: #34495e; /* Second complementary color */
+        }
+
+        h1 {
+            color: #333;
+            font-size: 36px; /* Larger font size */
+            margin-bottom: 20px;
+        }
+
+        p {
+            color: #666;
+            margin-bottom: 40px;
+        }
+
+        #createbtn, #viewbtn, #logoutbtn {
+            background: #f6d365; /* Complementary color for the right container */
+            color: #060000;
+            font-weight: bold;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            font-family: 'Poppins', sans-serif; /* Apply Poppins font */
+            border-radius: 20px; /* Add border radius for rounded corners */
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Add shadow for depth */
+            margin: 10px; /* Add margin for space between buttons */
+        }
+
+        #createbtn:hover, #viewbtn:hover, #logoutbtn:hover {
+            background: linear-gradient(135deg, #34495e, #7f8c8d);
+        }
+
+        #createbtn:focus, #viewbtn:focus, #logoutbtn:focus {
+            outline: none;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="left-container">
+        <div class="container">
+            <h1>Finance Book</h1>
+            <p>Hello, {{ user.username }}!</p>
+        </div>
+    </div>
+    <div class="right-container">
+        <div class="container">
+            <form action="create_user" method="get">
+                <input type="submit" id="createbtn" value="Create User">
+            </form>
+            <form action="view_users" method="get">
+                <input type="submit" id="viewbtn" value="Show Users">
+            </form>
+            <form action="{% url 'logout' %}" method="post">
+                {% csrf_token %}
+                <input type="submit" id="logoutbtn" value="Logout">
+            </form>
+        </div>
+    </div>
+</body>
+</html>
