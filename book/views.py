@@ -65,6 +65,17 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import login
 from .loginform import LoginForm, RegistrationForm
 
+
+from django.shortcuts import render
+
+def home(request):
+    return render(request, 'home.html')
+
+def about(request):
+    return render(request, 'about.html')
+
+
+
 def login_view(request):
     if request.method == 'POST':
         form = LoginForm(request=request, data=request.POST)
